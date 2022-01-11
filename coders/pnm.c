@@ -1586,7 +1586,7 @@ static Image *ReadPNMImage(const ImageInfo *image_info,ExceptionInfo *exception)
     if (*comment_info.comment != '\0')
       (void) SetImageProperty(image,"comment",comment_info.comment,exception);
     comment_info.comment=DestroyString(comment_info.comment);
-    if (y < (ssize_t) image->rows)
+    if (y > (ssize_t) image->rows)
       ThrowPNMException(CorruptImageError,"UnableToReadImageData");
     if (EOFBlob(image) != MagickFalse)
       {
